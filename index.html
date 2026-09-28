@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>RK LIGHT — සම්පූර්ණ Project Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="RK LIGHT home">
+      <span class="brand-mark">⚡</span>
+      <span>
+        <strong>RK LIGHT</strong>
+        <small>Smart Output Controller</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="themeBtn" class="icon-btn" aria-label="Theme මාරු කරන්න">☼</button>
+      <button id="menuBtn" class="icon-btn mobile-only" aria-label="Menu එක අරින්න">☰</button>
+    </div>
+  </header>
+
+  <nav id="sideNav" class="side-nav">
+    <a href="#overview">Project එක</a>
+    <a href="#outputs">Outputs</a>
+    <a href="#architecture">System එක වැඩ කරන විදිහ</a>
+    <a href="#app">iPhone App</a>
+    <a href="#automation">Automation</a>
+    <a href="#setup">Setup Steps</a>
+    <a href="#firmware">Firmware / GitHub</a>
+    <a href="#troubleshooting">ප්‍රශ්න සහ විසඳුම්</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" id="overview">
+      <div class="hero-copy">
+        <div class="eyebrow">RK LIGHT · v3.9</div>
+        <h1>Outputs 3ක්. Local + Cloud. එකම App එකකින්.</h1>
+        <p>
+          මේ project එකේ <b>Output 1</b> සහ <b>Output 2</b> ESP8266 එකෙන් control කරනවා.
+          <b>Output 3</b> ESP32 එකෙන් control කරනවා. iPhone App එකෙන් Outputs තුනම
+          වෙන වෙනම ON/OFF කරන්න, Schedules දාන්න, Countdown දාන්න, Scenes සහ Auto-off
+          වගේ options භාවිත කරන්න පුළුවන්.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-btn" href="#setup">Setup එක පටන් ගන්න</a>
+          <a class="secondary-btn" href="#architecture">System Flow බලන්න</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="status-row"><span class="dot online"></span> Project Guide · v3.9</div>
+        <div class="mini-grid">
+          <div><span>Output 1</span><b>D1 / GPIO 5</b></div>
+          <div><span>Output 2</span><b>D2 / GPIO 4</b></div>
+          <div><span>Output 3</span><b>ESP32 / GPIO 13</b></div>
+          <div><span>Control</span><b>Local + Cloud</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outputs">
+      <div class="section-heading">
+        <span>01</span>
+        <div>
+          <h2>Outputs තුන</h2>
+          <p>එක් එක් Output එක භාවිත කරන Board එක සහ Pin එක.</p>
+        </div>
+      </div>
+
+      <div class="card-grid three">
+        <article class="output-card mint">
+          <div class="card-icon">01</div>
+          <h3>Output 1</h3>
+          <p>ESP8266</p>
+          <code>D1 / GPIO 5</code>
+        </article>
+
+        <article class="output-card blue">
+          <div class="card-icon">02</div>
+          <h3>Output 2</h3>
+          <p>ESP8266</p>
+          <code>D2 / GPIO 4</code>
+        </article>
+
+        <article class="output-card purple">
+          <div class="card-icon">03</div>
+          <h3>Output 3</h3>
+          <p>ESP32</p>
+          <code>GPIO 13</code>
+          <div class="logic-chip">HIGH = ON · LOW = OFF</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="section-heading">
+        <span>02</span>
+        <div>
+          <h2>System එක වැඩ කරන විදිහ</h2>
+          <p>Output 3 command එක ESP8266 හරහා ESP32 එකට යනවා.</p>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-node">
+          <b>iPhone App</b>
+          <small>Local / HiveMQ Cloud</small>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-node">
+          <b>ESP8266</b>
+          <small>Main Controller · Output 1 + 2</small>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-node accent">
+          <b>ESP32</b>
+          <small>Output 3 · GPIO13</small>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>ESP32 Output 3 API</strong>
+        <p class="muted">මේ URLs ESP8266 එකෙන් ESP32 එකට Output 3 command යවන්න භාවිත කරනවා.</p>
+        <div class="code-list">
+          <div><code>/output3/on</code><button data-copy="/output3/on">Copy</button></div>
+          <div><code>/output3/off</code><button data-copy="/output3/off">Copy</button></div>
+          <div><code>/output3/status</code><button data-copy="/output3/status">Copy</button></div>
+          <div><code>/ping</code><button data-copy="/ping">Copy</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="app">
+      <div class="section-heading">
+        <span>03</span>
+        <div>
+          <h2>iPhone App එක</h2>
+          <p>Outputs තුනම එකම Dashboard එකෙන් manage කරන්න පුළුවන්.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature"><b>Manual ON / OFF</b><p>Output එකක් වෙන වෙනම ON හෝ OFF කරන්න.</p></div>
+        <div class="feature"><b>Schedules</b><p>දිනය සහ වෙලාව අනුව ON/OFF වෙන්න schedule දාන්න.</p></div>
+        <div class="feature"><b>Countdown</b><p>නියමිත මිනිත්තු ගණනකට පස්සේ action එකක් run කරන්න.</p></div>
+        <div class="feature"><b>Scenes</b><p>All ON, All OFF සහ custom output combinations.</p></div>
+        <div class="feature"><b>Auto-off</b><p>ON කළ Output එකක් කාලයක් ගියාම automatically OFF කරන්න.</p></div>
+        <div class="feature"><b>Power Restore</b><p>Power cut එකකට පස්සේ state එක handle කරන විදිහ තෝරන්න.</p></div>
+        <div class="feature"><b>ESP Status</b><p>Connection, Wi-Fi signal, uptime සහ Output status බලන්න.</p></div>
+        <div class="feature"><b>Firmware</b><p>Firmware update සහ OTA update options භාවිත කරන්න.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="automation">
+      <div class="section-heading">
+        <span>04</span>
+        <div>
+          <h2>Automation</h2>
+          <p>Phone App එක වහලා තිබුණත් ESP boards online නම් automation වැඩ කරයි.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <details open>
+          <summary>AUTO MODE කියන්නේ මොකක්ද?</summary>
+          <p>Schedules සහ automatic functions enable/disable කරන main control එක. Manual ON/OFF controls වෙනම භාවිත කරන්න පුළුවන්.</p>
+        </details>
+        <details>
+          <summary>Schedules</summary>
+          <p>Output 1, Output 2 හෝ Output 3 සඳහා one-time හෝ recurring ON/OFF schedule හදන්න පුළුවන්.</p>
+        </details>
+        <details>
+          <summary>Countdown</summary>
+          <p>Output එක තෝරලා මිනිත්තු ගණනක් දාලා ඒ කාලය අවසානයේ ON/OFF action එකක් run කරන්න පුළුවන්.</p>
+        </details>
+        <details>
+          <summary>Auto-off</summary>
+          <p>Output එක ON වුණාට පස්සේ set කරපු කාලය ගියාම automatically OFF කරන්න පුළුවන්.</p>
+        </details>
+        <details>
+          <summary>Scenes</summary>
+          <p>Outputs කිහිපයක් එකවර වෙනස් කරන්න. උදාහරණයක් විදිහට All ON, All OFF හෝ Night Scene.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="setup">
+      <div class="section-heading">
+        <span>05</span>
+        <div>
+          <h2>Setup කරන Steps</h2>
+          <p>Project එක මුලින් setup කරනකොට මේ order එක follow කරන්න.</p>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <span>1</span>
+          <div>
+            <b>ESP32 firmware එක upload කරන්න</b>
+            <p>Wi-Fi Name සහ Password code එකට දාලා ESP32-CAM/ESP32 board එකට firmware upload කරන්න.</p>
+          </div>
+        </li>
+        <li>
+          <span>2</span>
+          <div>
+            <b>ESP32 IP එක බලන්න</b>
+            <p>Serial Monitor එක 115200 baud වල open කරලා ESP32 එකට ලැබුණු IP address එක note කරගන්න.</p>
+          </div>
+        </li>
+        <li>
+          <span>3</span>
+          <div>
+            <b>ESP8266 bridge firmware එක update කරන්න</b>
+            <p>ESP8266 code එකේ ESP32 IP එක හරිද බලලා firmware එක upload කරන්න.</p>
+          </div>
+        </li>
+        <li>
+          <span>4</span>
+          <div>
+            <b>iPhone App එක install කරන්න</b>
+            <p>GitHub Actions හරහා IPA build කරලා ඔබගේ signing method එකෙන් iPhone එකට install කරන්න.</p>
+          </div>
+        </li>
+        <li>
+          <span>5</span>
+          <div>
+            <b>Outputs තුනම test කරන්න</b>
+            <p>Automation දාන්න කලින් Output 1, Output 2 සහ Output 3 ON/OFF individually test කරන්න.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" id="firmware">
+      <div class="section-heading">
+        <span>06</span>
+        <div>
+          <h2>Firmware සහ GitHub</h2>
+          <p>Build කරනකොට වැඩිපුර භාවිත වෙන details.</p>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <small>GitHub Actions Path</small>
+          <code>.github/workflows/build-ipa.yml</code>
+          <button data-copy=".github/workflows/build-ipa.yml">Path එක Copy කරන්න</button>
+        </div>
+        <div class="info-card">
+          <small>ESP32 Hostname</small>
+          <code>RK-OUTPUT3</code>
+          <button data-copy="RK-OUTPUT3">Copy</button>
+        </div>
+        <div class="info-card">
+          <small>Serial Monitor Baud</small>
+          <code>115200</code>
+          <button data-copy="115200">Copy</button>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <b>වැදගත්:</b>
+        <p>ESP32 Output 3 relay logic එක මේ project එකේ <strong>HIGH = ON</strong> සහ <strong>LOW = OFF</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="troubleshooting">
+      <div class="section-heading">
+        <span>07</span>
+        <div>
+          <h2>ප්‍රශ්න සහ ඉක්මන් විසඳුම්</h2>
+          <p>Project එකේ common errors කිහිපයක්.</p>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <details>
+          <summary>App එකේ Output 3 OFFLINE කියලා පෙන්වනවා</summary>
+          <p>ESP32 Wi-Fi එකට connect වෙලාද බලන්න. ESP8266 සහ ESP32 එකම local network එකේද, ESP32 IP එක ESP8266 firmware එකේ හරිද කියලා check කරන්න.</p>
+        </details>
+        <details>
+          <summary>Output 3 ON/OFF reverse වෙලා</summary>
+          <p>මේ setup එකේ GPIO13 සඳහා HIGH = ON සහ LOW = OFF භාවිත කරන්න.</p>
+        </details>
+        <details>
+          <summary>OTA upload එකේ “No response from the ESP”</summary>
+          <p>Arduino IDE එකේ selected Network Port එක ESP32 එකේ current IP එකට match වෙනවද බලන්න. අවශ්‍ය නම් USB adapter එකෙන් wired upload එකක් කරන්න.</p>
+        </details>
+        <details>
+          <summary>GitHub build එක ScheduleTests වල fail වෙනවා</summary>
+          <p>Test file එකේ intentional <code>fatalError(...)</code> line එකක් තිබේද බලලා valid test assertion එකකට මාරු කරන්න.</p>
+        </details>
+        <details>
+          <summary>ESP32 Wi-Fi එකට connect වෙන්නේ නැහැ</summary>
+          <p>Wi-Fi SSID සහ Password exact ද බලන්න. ESP32 සඳහා 2.4 GHz Wi-Fi භාවිත කරන්න.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="warning">
+      <strong>Safety</strong>
+      <p>
+        Testing කරනකොට controller side එක low-voltage වලින් කරන්න. මේ page එක mains AC wiring guide එකක් නෙවෙයි.
+        Relay module එකක් සහ external load එකක් භාවිත කරනවා නම් ඒවාට ගැළපෙන isolation, ratings සහ ආරක්ෂිත wiring අවශ්‍යයි.
+      </p>
+    </section>
+
+    <footer>
+      <b>RK LIGHT</b>
+      <span>ESP8266 + ESP32 · Three-output Controller · v3.9</span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast">Copy කළා</div>
+  <script src="script.js"></script>
+</body>
+</html>
