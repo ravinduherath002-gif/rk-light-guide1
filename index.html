@@ -39,11 +39,12 @@
   <main id="top">
     <section class="hero" id="overview">
       <div class="hero-copy">
-        <div class="eyebrow">RK LIGHT · v3.9</div>
-        <h1>Outputs 3ක්. Local + Cloud. එකම App එකකින්.</h1>
+        <div class="eyebrow">RK LIGHT · v4.0</div>
+        <h1>Outputs 4ක්. Local + Cloud. එකම App එකකින්.</h1>
         <p>
           මේ project එකේ <b>Output 1</b> සහ <b>Output 2</b> ESP8266 එකෙන් control කරනවා.
-          <b>Output 3</b> ESP32 එකෙන් control කරනවා. iPhone App එකෙන් Outputs තුනම
+          <b>Output 3</b> ESP32 node එකෙන් සහ <b>Output 4</b> ESP32 Dev Module එකෙන් control කරනවා.
+          iPhone App එකෙන් Outputs හතරම
           වෙන වෙනම ON/OFF කරන්න, Schedules දාන්න, Countdown දාන්න, Scenes සහ Auto-off
           වගේ options භාවිත කරන්න පුළුවන්.
         </p>
@@ -55,11 +56,12 @@
       </div>
 
       <div class="hero-card">
-        <div class="status-row"><span class="dot online"></span> Project Guide · v3.9</div>
+        <div class="status-row"><span class="dot online"></span> Project Guide · v4.0</div>
         <div class="mini-grid">
           <div><span>Output 1</span><b>D1 / GPIO 5</b></div>
           <div><span>Output 2</span><b>D2 / GPIO 4</b></div>
           <div><span>Output 3</span><b>ESP32 / GPIO 13</b></div>
+          <div><span>Output 4</span><b>ESP32 Dev / GPIO 26</b></div>
           <div><span>Control</span><b>Local + Cloud</b></div>
         </div>
       </div>
@@ -69,7 +71,7 @@
       <div class="section-heading">
         <span>01</span>
         <div>
-          <h2>Outputs තුන</h2>
+          <h2>Outputs හතර</h2>
           <p>එක් එක් Output එක භාවිත කරන Board එක සහ Pin එක.</p>
         </div>
       </div>
@@ -96,6 +98,14 @@
           <code>GPIO 13</code>
           <div class="logic-chip">HIGH = ON · LOW = OFF</div>
         </article>
+
+        <article class="output-card cyan">
+          <div class="card-icon">04</div>
+          <h3>Output 4</h3>
+          <p>ESP32 Dev Module</p>
+          <code>GPIO 26</code>
+          <div class="logic-chip">HIGH = ON · LOW = OFF</div>
+        </article>
       </div>
     </section>
 
@@ -104,7 +114,7 @@
         <span>02</span>
         <div>
           <h2>System එක වැඩ කරන විදිහ</h2>
-          <p>Output 3 command එක ESP8266 හරහා ESP32 එකට යනවා.</p>
+          <p>Output 3 සහ Output 4 commands ESP8266 හරහා ESP32 nodes දෙකට යනවා.</p>
         </div>
       </div>
 
@@ -120,18 +130,21 @@
         </div>
         <div class="arrow">→</div>
         <div class="flow-node accent">
-          <b>ESP32</b>
-          <small>Output 3 · GPIO13</small>
+          <b>ESP32 Nodes</b>
+          <small>Output 3 · GPIO13 + Output 4 · GPIO26</small>
         </div>
       </div>
 
       <div class="note">
-        <strong>ESP32 Output 3 API</strong>
+        <strong>ESP32 Output 3 / 4 API</strong>
         <p class="muted">මේ URLs ESP8266 එකෙන් ESP32 එකට Output 3 command යවන්න භාවිත කරනවා.</p>
         <div class="code-list">
           <div><code>/output3/on</code><button data-copy="/output3/on">Copy</button></div>
           <div><code>/output3/off</code><button data-copy="/output3/off">Copy</button></div>
           <div><code>/output3/status</code><button data-copy="/output3/status">Copy</button></div>
+          <div><code>/output4/on</code><button data-copy="/output4/on">Copy</button></div>
+          <div><code>/output4/off</code><button data-copy="/output4/off">Copy</button></div>
+          <div><code>/output4/status</code><button data-copy="/output4/status">Copy</button></div>
           <div><code>/ping</code><button data-copy="/ping">Copy</button></div>
         </div>
       </div>
@@ -142,7 +155,7 @@
         <span>03</span>
         <div>
           <h2>iPhone App එක</h2>
-          <p>Outputs තුනම එකම Dashboard එකෙන් manage කරන්න පුළුවන්.</p>
+          <p>Outputs හතරම එකම Dashboard එකෙන් manage කරන්න පුළුවන්.</p>
         </div>
       </div>
 
@@ -174,7 +187,7 @@
         </details>
         <details>
           <summary>Schedules</summary>
-          <p>Output 1, Output 2 හෝ Output 3 සඳහා one-time හෝ recurring ON/OFF schedule හදන්න පුළුවන්.</p>
+          <p>Output 1, Output 2, Output 3 හෝ Output 4 සඳහා one-time හෝ recurring ON/OFF schedule හදන්න පුළුවන්.</p>
         </details>
         <details>
           <summary>Countdown</summary>
@@ -204,22 +217,22 @@
         <li>
           <span>1</span>
           <div>
-            <b>ESP32 firmware එක upload කරන්න</b>
-            <p>Wi-Fi Name සහ Password code එකට දාලා ESP32-CAM/ESP32 board එකට firmware upload කරන්න.</p>
+            <b>ESP32 Output 3 සහ Output 4 firmware upload කරන්න</b>
+            <p>Wi-Fi Name සහ Password code එකට දාලා Output 3 ESP32 board එකට සහ Output 4 ESP32 Dev Module එකට අදාල firmware upload කරන්න.</p>
           </div>
         </li>
         <li>
           <span>2</span>
           <div>
-            <b>ESP32 IP එක බලන්න</b>
-            <p>Serial Monitor එක 115200 baud වල open කරලා ESP32 එකට ලැබුණු IP address එක note කරගන්න.</p>
+            <b>ESP32 node IP දෙකම බලන්න</b>
+            <p>Serial Monitor එක 115200 baud වල open කරලා Output 3 සහ Output 4 nodes වල IP addresses note කරගන්න.</p>
           </div>
         </li>
         <li>
           <span>3</span>
           <div>
             <b>ESP8266 bridge firmware එක update කරන්න</b>
-            <p>ESP8266 code එකේ ESP32 IP එක හරිද බලලා firmware එක upload කරන්න.</p>
+            <p>ESP8266 code එකේ OUTPUT3_HOST සහ OUTPUT4_HOST හරිද බලලා firmware එක upload කරන්න.</p>
           </div>
         </li>
         <li>
@@ -232,8 +245,8 @@
         <li>
           <span>5</span>
           <div>
-            <b>Outputs තුනම test කරන්න</b>
-            <p>Automation දාන්න කලින් Output 1, Output 2 සහ Output 3 ON/OFF individually test කරන්න.</p>
+            <b>Outputs හතරම test කරන්න</b>
+            <p>Automation දාන්න කලින් Output 1, Output 2, Output 3 සහ Output 4 ON/OFF individually test කරන්න.</p>
           </div>
         </li>
       </ol>
@@ -268,7 +281,7 @@
 
       <div class="tip-box">
         <b>වැදගත්:</b>
-        <p>ESP32 Output 3 relay logic එක මේ project එකේ <strong>HIGH = ON</strong> සහ <strong>LOW = OFF</strong>.</p>
+        <p>ESP32 Output 3 සහ Output 4 relay logic එක මේ project එකේ <strong>HIGH = ON</strong> සහ <strong>LOW = OFF</strong>.</p>
       </div>
     </section>
 
@@ -315,7 +328,7 @@
 
     <footer>
       <b>RK LIGHT</b>
-      <span>ESP8266 + ESP32 · Three-output Controller · v3.9</span>
+      <span>ESP8266 + ESP32 · Four-output Controller · v4.0</span>
     </footer>
   </main>
 
