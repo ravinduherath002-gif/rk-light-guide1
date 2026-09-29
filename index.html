@@ -3,336 +3,430 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b1220" />
-  <title>RK LIGHT — සම්පූර්ණ Project Guide</title>
+  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="RK LIGHT v4.1 — ESP8266 + ESP32 four-output smart controller project guide." />
+  <title>RK LIGHT v4.1 — Project Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="RK LIGHT home">
-      <span class="brand-mark">⚡</span>
-      <span>
-        <strong>RK LIGHT</strong>
-        <small>Smart Output Controller</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="themeBtn" class="icon-btn" aria-label="Theme මාරු කරන්න">☼</button>
-      <button id="menuBtn" class="icon-btn mobile-only" aria-label="Menu එක අරින්න">☰</button>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <strong>RK LIGHT</strong>
+          <span>Smart Controller</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Project sections">
+        <button class="nav-item active" data-page="overview">
+          <span class="nav-index">01</span>
+          <span>Overview</span>
+        </button>
+        <button class="nav-item" data-page="outputs">
+          <span class="nav-index">02</span>
+          <span>Outputs</span>
+        </button>
+        <button class="nav-item" data-page="architecture">
+          <span class="nav-index">03</span>
+          <span>Architecture</span>
+        </button>
+        <button class="nav-item" data-page="app">
+          <span class="nav-index">04</span>
+          <span>iPhone App</span>
+        </button>
+        <button class="nav-item" data-page="automation">
+          <span class="nav-index">05</span>
+          <span>Automation</span>
+        </button>
+        <button class="nav-item" data-page="setup">
+          <span class="nav-index">06</span>
+          <span>Setup</span>
+        </button>
+        <button class="nav-item" data-page="support">
+          <span class="nav-index">07</span>
+          <span>Support</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="live-dot"></span>
+        <span>Project Guide · v4.1</span>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="mobile-brand">
+          <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+          <strong>RK LIGHT</strong>
+        </div>
+
+        <div class="topbar-title">
+          <span class="eyebrow">ESP8266 + ESP32</span>
+          <span class="divider"></span>
+          <span class="top-status">4-Output Smart Control</span>
+        </div>
+
+        <div class="top-actions">
+          <button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark theme">☼</button>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- OVERVIEW -->
+        <section class="page active" id="overview">
+          <div class="page-head">
+            <div>
+              <span class="kicker">RK LIGHT · v4.1</span>
+              <h1>Professional smart output control.</h1>
+              <p class="lead">
+                Outputs 4ක් <b>Local + Cloud</b> control කරන්න හදපු ESP8266 + ESP32 system එක.
+                Fast reconnect, persistent app connection සහ cleaner multi-device architecture එකක් එක්ක.
+              </p>
+            </div>
+            <div class="version-chip">PROJECT READY</div>
+          </div>
+
+          <div class="overview-grid">
+            <article class="hero-panel">
+              <div class="hero-label">SYSTEM SUMMARY</div>
+              <h2>One app. Four outputs. Two control routes.</h2>
+              <p>
+                Output 1/2 ESP8266 එකෙන් direct control වෙනවා. Output 3 සහ Output 4
+                separate ESP32 nodes දෙකකින් run වෙනවා. Main ESP8266 controller එක bridge එකක් ලෙස වැඩ කරනවා.
+              </p>
+
+              <div class="route-row">
+                <div class="route">
+                  <span>LOCAL</span>
+                  <b>Home Wi-Fi</b>
+                  <small>Low-latency control</small>
+                </div>
+                <div class="route">
+                  <span>CLOUD</span>
+                  <b>HiveMQ</b>
+                  <small>Remote access</small>
+                </div>
+              </div>
+            </article>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span>Outputs</span>
+                <strong>04</strong>
+                <small>Independent channels</small>
+              </div>
+              <div class="stat-card">
+                <span>Controllers</span>
+                <strong>03</strong>
+                <small>ESP8266 + 2× ESP32</small>
+              </div>
+              <div class="stat-card">
+                <span>App</span>
+                <strong>iOS</strong>
+                <small>Auto reconnect</small>
+              </div>
+              <div class="stat-card">
+                <span>Mode</span>
+                <strong>24/7</strong>
+                <small>Automation ready</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- OUTPUTS -->
+        <section class="page" id="outputs">
+          <div class="page-head compact">
+            <div>
+              <span class="kicker">HARDWARE MAP</span>
+              <h1>Outputs & pin mapping</h1>
+              <p class="lead">Current v4.1 hardware allocation එක.</p>
+            </div>
+          </div>
+
+          <div class="output-grid">
+            <article class="output-card green">
+              <div class="output-top"><span>OUTPUT 01</span><b>ESP8266</b></div>
+              <div class="pin">D1 <small>/ GPIO 5</small></div>
+              <p>Main controller direct output.</p>
+            </article>
+
+            <article class="output-card cyan">
+              <div class="output-top"><span>OUTPUT 02</span><b>ESP8266</b></div>
+              <div class="pin">D2 <small>/ GPIO 4</small></div>
+              <p>Main controller direct output.</p>
+            </article>
+
+            <article class="output-card violet">
+              <div class="output-top"><span>OUTPUT 03</span><b>ESP32 Node</b></div>
+              <div class="pin">GPIO 13</div>
+              <p>HIGH = ON · LOW = OFF</p>
+            </article>
+
+            <article class="output-card amber">
+              <div class="output-top"><span>OUTPUT 04</span><b>ESP32 Dev</b></div>
+              <div class="pin">GPIO 26</div>
+              <p>Dedicated future light node.</p>
+            </article>
+          </div>
+
+          <div class="inline-note">
+            <b>Note:</b>
+            Relay/module logic එක hardware එක අනුව verify කරන්න. Current Output 3 configuration එක <b>HIGH = ON</b>, <b>LOW = OFF</b>.
+          </div>
+        </section>
+
+        <!-- ARCHITECTURE -->
+        <section class="page" id="architecture">
+          <div class="page-head compact">
+            <div>
+              <span class="kicker">NETWORK DESIGN</span>
+              <h1>System architecture</h1>
+              <p class="lead">App command එක devices අතර move වෙන විදිහ.</p>
+            </div>
+          </div>
+
+          <div class="architecture-wrap">
+            <div class="flow-card">
+              <div class="flow-node primary">
+                <span>01</span>
+                <b>iPhone App</b>
+                <small>Local / HiveMQ Cloud</small>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-node">
+                <span>02</span>
+                <b>ESP8266</b>
+                <small>Main controller + bridge</small>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-stack">
+                <div class="flow-node small-node">
+                  <span>03</span>
+                  <b>ESP32 #1</b>
+                  <small>Output 3 · GPIO13</small>
+                </div>
+                <div class="flow-node small-node">
+                  <span>04</span>
+                  <b>ESP32 #2</b>
+                  <small>Output 4 · GPIO26</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="api-panel">
+              <div class="panel-title">
+                <span>OUTPUT APIs</span>
+                <small>Tap Copy</small>
+              </div>
+
+              <div class="api-row">
+                <code>/output3/on</code>
+                <button data-copy="/output3/on">Copy</button>
+              </div>
+              <div class="api-row">
+                <code>/output3/off</code>
+                <button data-copy="/output3/off">Copy</button>
+              </div>
+              <div class="api-row">
+                <code>/output4/on</code>
+                <button data-copy="/output4/on">Copy</button>
+              </div>
+              <div class="api-row">
+                <code>/output4/off</code>
+                <button data-copy="/output4/off">Copy</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- APP -->
+        <section class="page" id="app">
+          <div class="page-head compact">
+            <div>
+              <span class="kicker">IOS CONTROL</span>
+              <h1>iPhone App experience</h1>
+              <p class="lead">Fast, clean සහ reconnect press කරන්න නොවෙන ලෙස optimize කරපු flow එක.</p>
+            </div>
+          </div>
+
+          <div class="feature-layout">
+            <div class="feature-main">
+              <span class="feature-tag">CONNECTION</span>
+              <h2>Connect once. Reconnect automatically.</h2>
+              <p>
+                First successful connection එකෙන් පස්සේ app එක connection preference save කරනවා.
+                App reopen කළාම manual Connect button press කරන්න නැතුව Local හෝ Cloud route එකට reconnect වෙන්න design කරලා තියෙනවා.
+              </p>
+
+              <div class="progress-list">
+                <div><span>Local route priority</span><b>FAST</b></div>
+                <div><span>Cloud fallback</span><b>AUTO</b></div>
+                <div><span>Persistent intent</span><b>ON</b></div>
+              </div>
+            </div>
+
+            <div class="feature-cards">
+              <article><b>Manual Control</b><span>4 independent ON/OFF controls</span></article>
+              <article><b>Schedules</b><span>One-time + recurring actions</span></article>
+              <article><b>Countdown</b><span>Per-output timed actions</span></article>
+              <article><b>Scenes</b><span>All ON / OFF + custom scene</span></article>
+              <article><b>Auto-off</b><span>Automatic safety timing</span></article>
+              <article><b>Status</b><span>Live device & network state</span></article>
+            </div>
+          </div>
+        </section>
+
+        <!-- AUTOMATION -->
+        <section class="page" id="automation">
+          <div class="page-head compact">
+            <div>
+              <span class="kicker">SMART LOGIC</span>
+              <h1>Automation features</h1>
+              <p class="lead">Phone එක close කරලා තිබුණත් controller-side automation continue වෙන්න design කරපු system එක.</p>
+            </div>
+          </div>
+
+          <div class="automation-grid">
+            <article>
+              <span class="number">01</span>
+              <b>AUTO MODE</b>
+              <p>Schedules සහ automatic rules සඳහා master control.</p>
+            </article>
+            <article>
+              <span class="number">02</span>
+              <b>SCHEDULES</b>
+              <p>One-time, Daily සහ Weekly ON/OFF events.</p>
+            </article>
+            <article>
+              <span class="number">03</span>
+              <b>COUNTDOWN</b>
+              <p>Selected output එකකට timed action එකක්.</p>
+            </article>
+            <article>
+              <span class="number">04</span>
+              <b>AUTO-OFF</b>
+              <p>Configured duration එකකට පස්සේ output OFF කිරීම.</p>
+            </article>
+            <article>
+              <span class="number">05</span>
+              <b>SCENES</b>
+              <p>Multiple outputs එක command එකකින් set කිරීම.</p>
+            </article>
+            <article>
+              <span class="number">06</span>
+              <b>POWER RESTORE</b>
+              <p>Restart පස්සේ output state recovery policy.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- SETUP -->
+        <section class="page" id="setup">
+          <div class="page-head compact">
+            <div>
+              <span class="kicker">QUICK START</span>
+              <h1>Setup sequence</h1>
+              <p class="lead">Components ආවට පස්සේ මේ order එකෙන් setup කරන්න.</p>
+            </div>
+          </div>
+
+          <div class="setup-grid">
+            <div class="setup-step">
+              <span>1</span>
+              <div><b>Flash ESP32 #1</b><p>Output 3 firmware + Wi-Fi details.</p></div>
+            </div>
+            <div class="setup-step">
+              <span>2</span>
+              <div><b>Flash ESP32 #2</b><p>Output 4 firmware + Wi-Fi details.</p></div>
+            </div>
+            <div class="setup-step">
+              <span>3</span>
+              <div><b>Update ESP8266</b><p>Set both ESP32 node addresses.</p></div>
+            </div>
+            <div class="setup-step">
+              <span>4</span>
+              <div><b>Install iPhone App</b><p>Build IPA from GitHub Actions.</p></div>
+            </div>
+            <div class="setup-step">
+              <span>5</span>
+              <div><b>Test Local</b><p>Outputs 1–4 individually.</p></div>
+            </div>
+            <div class="setup-step">
+              <span>6</span>
+              <div><b>Test Cloud</b><p>Mobile data / remote route.</p></div>
+            </div>
+          </div>
+
+          <div class="github-strip">
+            <div>
+              <small>GITHUB ACTIONS PATH</small>
+              <code>.github/workflows/build-ipa.yml</code>
+            </div>
+            <button data-copy=".github/workflows/build-ipa.yml">Copy Path</button>
+          </div>
+        </section>
+
+        <!-- SUPPORT -->
+        <section class="page" id="support">
+          <div class="page-head compact">
+            <div>
+              <span class="kicker">SUPPORT</span>
+              <h1>Common checks</h1>
+              <p class="lead">Fast troubleshooting reference.</p>
+            </div>
+          </div>
+
+          <div class="support-grid">
+            <button class="support-card" data-modal="offline">
+              <b>Output node OFFLINE</b>
+              <span>Network / IP checks</span>
+            </button>
+            <button class="support-card" data-modal="reverse">
+              <b>Relay logic reversed</b>
+              <span>HIGH / LOW mapping</span>
+            </button>
+            <button class="support-card" data-modal="ota">
+              <b>OTA no response</b>
+              <span>Network port mismatch</span>
+            </button>
+            <button class="support-card" data-modal="wifi">
+              <b>ESP Wi-Fi issue</b>
+              <span>SSID / 2.4 GHz checks</span>
+            </button>
+            <button class="support-card" data-modal="github">
+              <b>GitHub build error</b>
+              <span>Workflow / test checks</span>
+            </button>
+            <button class="support-card warning-card" data-modal="safety">
+              <b>Electrical Safety</b>
+              <span>Low-voltage testing first</span>
+            </button>
+          </div>
+        </section>
+      </main>
     </div>
-  </header>
+  </div>
 
-  <nav id="sideNav" class="side-nav">
-    <a href="#overview">Project එක</a>
-    <a href="#outputs">Outputs</a>
-    <a href="#architecture">System එක වැඩ කරන විදිහ</a>
-    <a href="#app">iPhone App</a>
-    <a href="#automation">Automation</a>
-    <a href="#setup">Setup Steps</a>
-    <a href="#firmware">Firmware / GitHub</a>
-    <a href="#troubleshooting">ප්‍රශ්න සහ විසඳුම්</a>
-  </nav>
+  <div class="toast" id="toast">Copied</div>
 
-  <main id="top">
-    <section class="hero" id="overview">
-      <div class="hero-copy">
-        <div class="eyebrow">RK LIGHT · v4.0</div>
-        <h1>Outputs 4ක්. Local + Cloud. එකම App එකකින්.</h1>
-        <p>
-          මේ project එකේ <b>Output 1</b> සහ <b>Output 2</b> ESP8266 එකෙන් control කරනවා.
-          <b>Output 3</b> ESP32 node එකෙන් සහ <b>Output 4</b> ESP32 Dev Module එකෙන් control කරනවා.
-          iPhone App එකෙන් Outputs හතරම
-          වෙන වෙනම ON/OFF කරන්න, Schedules දාන්න, Countdown දාන්න, Scenes සහ Auto-off
-          වගේ options භාවිත කරන්න පුළුවන්.
-        </p>
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close-modal aria-label="Close">×</button>
+      <span class="modal-label">RK LIGHT SUPPORT</span>
+      <h2 id="modalTitle">Support</h2>
+      <p id="modalText"></p>
+    </div>
+  </div>
 
-        <div class="hero-actions">
-          <a class="primary-btn" href="#setup">Setup එක පටන් ගන්න</a>
-          <a class="secondary-btn" href="#architecture">System Flow බලන්න</a>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <div class="status-row"><span class="dot online"></span> Project Guide · v4.0</div>
-        <div class="mini-grid">
-          <div><span>Output 1</span><b>D1 / GPIO 5</b></div>
-          <div><span>Output 2</span><b>D2 / GPIO 4</b></div>
-          <div><span>Output 3</span><b>ESP32 / GPIO 13</b></div>
-          <div><span>Output 4</span><b>ESP32 Dev / GPIO 26</b></div>
-          <div><span>Control</span><b>Local + Cloud</b></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="outputs">
-      <div class="section-heading">
-        <span>01</span>
-        <div>
-          <h2>Outputs හතර</h2>
-          <p>එක් එක් Output එක භාවිත කරන Board එක සහ Pin එක.</p>
-        </div>
-      </div>
-
-      <div class="card-grid three">
-        <article class="output-card mint">
-          <div class="card-icon">01</div>
-          <h3>Output 1</h3>
-          <p>ESP8266</p>
-          <code>D1 / GPIO 5</code>
-        </article>
-
-        <article class="output-card blue">
-          <div class="card-icon">02</div>
-          <h3>Output 2</h3>
-          <p>ESP8266</p>
-          <code>D2 / GPIO 4</code>
-        </article>
-
-        <article class="output-card purple">
-          <div class="card-icon">03</div>
-          <h3>Output 3</h3>
-          <p>ESP32</p>
-          <code>GPIO 13</code>
-          <div class="logic-chip">HIGH = ON · LOW = OFF</div>
-        </article>
-
-        <article class="output-card cyan">
-          <div class="card-icon">04</div>
-          <h3>Output 4</h3>
-          <p>ESP32 Dev Module</p>
-          <code>GPIO 26</code>
-          <div class="logic-chip">HIGH = ON · LOW = OFF</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="architecture">
-      <div class="section-heading">
-        <span>02</span>
-        <div>
-          <h2>System එක වැඩ කරන විදිහ</h2>
-          <p>Output 3 සහ Output 4 commands ESP8266 හරහා ESP32 nodes දෙකට යනවා.</p>
-        </div>
-      </div>
-
-      <div class="flow">
-        <div class="flow-node">
-          <b>iPhone App</b>
-          <small>Local / HiveMQ Cloud</small>
-        </div>
-        <div class="arrow">→</div>
-        <div class="flow-node">
-          <b>ESP8266</b>
-          <small>Main Controller · Output 1 + 2</small>
-        </div>
-        <div class="arrow">→</div>
-        <div class="flow-node accent">
-          <b>ESP32 Nodes</b>
-          <small>Output 3 · GPIO13 + Output 4 · GPIO26</small>
-        </div>
-      </div>
-
-      <div class="note">
-        <strong>ESP32 Output 3 / 4 API</strong>
-        <p class="muted">මේ URLs ESP8266 එකෙන් ESP32 එකට Output 3 command යවන්න භාවිත කරනවා.</p>
-        <div class="code-list">
-          <div><code>/output3/on</code><button data-copy="/output3/on">Copy</button></div>
-          <div><code>/output3/off</code><button data-copy="/output3/off">Copy</button></div>
-          <div><code>/output3/status</code><button data-copy="/output3/status">Copy</button></div>
-          <div><code>/output4/on</code><button data-copy="/output4/on">Copy</button></div>
-          <div><code>/output4/off</code><button data-copy="/output4/off">Copy</button></div>
-          <div><code>/output4/status</code><button data-copy="/output4/status">Copy</button></div>
-          <div><code>/ping</code><button data-copy="/ping">Copy</button></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="app">
-      <div class="section-heading">
-        <span>03</span>
-        <div>
-          <h2>iPhone App එක</h2>
-          <p>Outputs හතරම එකම Dashboard එකෙන් manage කරන්න පුළුවන්.</p>
-        </div>
-      </div>
-
-      <div class="feature-grid">
-        <div class="feature"><b>Manual ON / OFF</b><p>Output එකක් වෙන වෙනම ON හෝ OFF කරන්න.</p></div>
-        <div class="feature"><b>Schedules</b><p>දිනය සහ වෙලාව අනුව ON/OFF වෙන්න schedule දාන්න.</p></div>
-        <div class="feature"><b>Countdown</b><p>නියමිත මිනිත්තු ගණනකට පස්සේ action එකක් run කරන්න.</p></div>
-        <div class="feature"><b>Scenes</b><p>All ON, All OFF සහ custom output combinations.</p></div>
-        <div class="feature"><b>Auto-off</b><p>ON කළ Output එකක් කාලයක් ගියාම automatically OFF කරන්න.</p></div>
-        <div class="feature"><b>Power Restore</b><p>Power cut එකකට පස්සේ state එක handle කරන විදිහ තෝරන්න.</p></div>
-        <div class="feature"><b>ESP Status</b><p>Connection, Wi-Fi signal, uptime සහ Output status බලන්න.</p></div>
-        <div class="feature"><b>Firmware</b><p>Firmware update සහ OTA update options භාවිත කරන්න.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="automation">
-      <div class="section-heading">
-        <span>04</span>
-        <div>
-          <h2>Automation</h2>
-          <p>Phone App එක වහලා තිබුණත් ESP boards online නම් automation වැඩ කරයි.</p>
-        </div>
-      </div>
-
-      <div class="accordion">
-        <details open>
-          <summary>AUTO MODE කියන්නේ මොකක්ද?</summary>
-          <p>Schedules සහ automatic functions enable/disable කරන main control එක. Manual ON/OFF controls වෙනම භාවිත කරන්න පුළුවන්.</p>
-        </details>
-        <details>
-          <summary>Schedules</summary>
-          <p>Output 1, Output 2, Output 3 හෝ Output 4 සඳහා one-time හෝ recurring ON/OFF schedule හදන්න පුළුවන්.</p>
-        </details>
-        <details>
-          <summary>Countdown</summary>
-          <p>Output එක තෝරලා මිනිත්තු ගණනක් දාලා ඒ කාලය අවසානයේ ON/OFF action එකක් run කරන්න පුළුවන්.</p>
-        </details>
-        <details>
-          <summary>Auto-off</summary>
-          <p>Output එක ON වුණාට පස්සේ set කරපු කාලය ගියාම automatically OFF කරන්න පුළුවන්.</p>
-        </details>
-        <details>
-          <summary>Scenes</summary>
-          <p>Outputs කිහිපයක් එකවර වෙනස් කරන්න. උදාහරණයක් විදිහට All ON, All OFF හෝ Night Scene.</p>
-        </details>
-      </div>
-    </section>
-
-    <section class="section" id="setup">
-      <div class="section-heading">
-        <span>05</span>
-        <div>
-          <h2>Setup කරන Steps</h2>
-          <p>Project එක මුලින් setup කරනකොට මේ order එක follow කරන්න.</p>
-        </div>
-      </div>
-
-      <ol class="steps">
-        <li>
-          <span>1</span>
-          <div>
-            <b>ESP32 Output 3 සහ Output 4 firmware upload කරන්න</b>
-            <p>Wi-Fi Name සහ Password code එකට දාලා Output 3 ESP32 board එකට සහ Output 4 ESP32 Dev Module එකට අදාල firmware upload කරන්න.</p>
-          </div>
-        </li>
-        <li>
-          <span>2</span>
-          <div>
-            <b>ESP32 node IP දෙකම බලන්න</b>
-            <p>Serial Monitor එක 115200 baud වල open කරලා Output 3 සහ Output 4 nodes වල IP addresses note කරගන්න.</p>
-          </div>
-        </li>
-        <li>
-          <span>3</span>
-          <div>
-            <b>ESP8266 bridge firmware එක update කරන්න</b>
-            <p>ESP8266 code එකේ OUTPUT3_HOST සහ OUTPUT4_HOST හරිද බලලා firmware එක upload කරන්න.</p>
-          </div>
-        </li>
-        <li>
-          <span>4</span>
-          <div>
-            <b>iPhone App එක install කරන්න</b>
-            <p>GitHub Actions හරහා IPA build කරලා ඔබගේ signing method එකෙන් iPhone එකට install කරන්න.</p>
-          </div>
-        </li>
-        <li>
-          <span>5</span>
-          <div>
-            <b>Outputs හතරම test කරන්න</b>
-            <p>Automation දාන්න කලින් Output 1, Output 2, Output 3 සහ Output 4 ON/OFF individually test කරන්න.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section class="section" id="firmware">
-      <div class="section-heading">
-        <span>06</span>
-        <div>
-          <h2>Firmware සහ GitHub</h2>
-          <p>Build කරනකොට වැඩිපුර භාවිත වෙන details.</p>
-        </div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <small>GitHub Actions Path</small>
-          <code>.github/workflows/build-ipa.yml</code>
-          <button data-copy=".github/workflows/build-ipa.yml">Path එක Copy කරන්න</button>
-        </div>
-        <div class="info-card">
-          <small>ESP32 Hostname</small>
-          <code>RK-OUTPUT3</code>
-          <button data-copy="RK-OUTPUT3">Copy</button>
-        </div>
-        <div class="info-card">
-          <small>Serial Monitor Baud</small>
-          <code>115200</code>
-          <button data-copy="115200">Copy</button>
-        </div>
-      </div>
-
-      <div class="tip-box">
-        <b>වැදගත්:</b>
-        <p>ESP32 Output 3 සහ Output 4 relay logic එක මේ project එකේ <strong>HIGH = ON</strong> සහ <strong>LOW = OFF</strong>.</p>
-      </div>
-    </section>
-
-    <section class="section" id="troubleshooting">
-      <div class="section-heading">
-        <span>07</span>
-        <div>
-          <h2>ප්‍රශ්න සහ ඉක්මන් විසඳුම්</h2>
-          <p>Project එකේ common errors කිහිපයක්.</p>
-        </div>
-      </div>
-
-      <div class="accordion">
-        <details>
-          <summary>App එකේ Output 3 OFFLINE කියලා පෙන්වනවා</summary>
-          <p>ESP32 Wi-Fi එකට connect වෙලාද බලන්න. ESP8266 සහ ESP32 එකම local network එකේද, ESP32 IP එක ESP8266 firmware එකේ හරිද කියලා check කරන්න.</p>
-        </details>
-        <details>
-          <summary>Output 3 ON/OFF reverse වෙලා</summary>
-          <p>මේ setup එකේ GPIO13 සඳහා HIGH = ON සහ LOW = OFF භාවිත කරන්න.</p>
-        </details>
-        <details>
-          <summary>OTA upload එකේ “No response from the ESP”</summary>
-          <p>Arduino IDE එකේ selected Network Port එක ESP32 එකේ current IP එකට match වෙනවද බලන්න. අවශ්‍ය නම් USB adapter එකෙන් wired upload එකක් කරන්න.</p>
-        </details>
-        <details>
-          <summary>GitHub build එක ScheduleTests වල fail වෙනවා</summary>
-          <p>Test file එකේ intentional <code>fatalError(...)</code> line එකක් තිබේද බලලා valid test assertion එකකට මාරු කරන්න.</p>
-        </details>
-        <details>
-          <summary>ESP32 Wi-Fi එකට connect වෙන්නේ නැහැ</summary>
-          <p>Wi-Fi SSID සහ Password exact ද බලන්න. ESP32 සඳහා 2.4 GHz Wi-Fi භාවිත කරන්න.</p>
-        </details>
-      </div>
-    </section>
-
-    <section class="warning">
-      <strong>Safety</strong>
-      <p>
-        Testing කරනකොට controller side එක low-voltage වලින් කරන්න. මේ page එක mains AC wiring guide එකක් නෙවෙයි.
-        Relay module එකක් සහ external load එකක් භාවිත කරනවා නම් ඒවාට ගැළපෙන isolation, ratings සහ ආරක්ෂිත wiring අවශ්‍යයි.
-      </p>
-    </section>
-
-    <footer>
-      <b>RK LIGHT</b>
-      <span>ESP8266 + ESP32 · Four-output Controller · v4.0</span>
-    </footer>
-  </main>
-
-  <div id="toast" class="toast">Copy කළා</div>
   <script src="script.js"></script>
 </body>
 </html>
