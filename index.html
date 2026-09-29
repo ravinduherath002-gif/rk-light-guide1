@@ -1,454 +1,127 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#07111f" />
-  <meta name="description" content="RK LIGHT v4.2 — ESP8266 + ESP32 four-output smart controller project guide." />
-  <title>RK LIGHT v4.2 — Project Guide</title>
+  <meta name="description" content="RK LIGHT — Wi-Fi smart lighting system for controlling four 230V lighting channels through isolated relay interfaces, with iOS and Android apps, schedules and remote control." />
+  <title>RK LIGHT — Smart Lighting System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <div class="brand-icon">⚡</div>
-        <div>
-          <strong>RK LIGHT</strong>
-          <span>Smart Controller</span>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-icon">⚡</div><div><strong>RK LIGHT</strong><span>Smart Lighting</span></div></div>
+    <nav class="nav-list" aria-label="Project sections">
+      <button class="nav-item active" data-page="overview"><span class="nav-index">01</span><span>Overview</span></button>
+      <button class="nav-item" data-page="outputs"><span class="nav-index">02</span><span>Lights</span></button>
+      <button class="nav-item" data-page="app"><span class="nav-index">03</span><span>Mobile App</span></button>
+      <button class="nav-item" data-page="automation"><span class="nav-index">04</span><span>Smart Features</span></button>
+      <button class="nav-item" data-page="safety"><span class="nav-index">05</span><span>Safety</span></button>
+    </nav>
+    <div class="sidebar-footer"><span class="live-dot"></span><span>Project Guide · v5.0</span></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div class="mobile-brand"><button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button><strong>RK LIGHT</strong></div>
+      <div class="topbar-title"><span class="eyebrow">WI-FI SMART LIGHTING</span><span class="divider"></span><span class="top-status">4 Lighting Channels</span></div>
+      <div class="top-actions"><button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark theme">☼</button></div>
+    </header>
+
+    <main class="content">
+      <section class="page active" id="overview">
+        <div class="page-head">
+          <div><span class="kicker">RK LIGHT · v5.0</span><h1>Smart control for everyday lighting.</h1>
+            <p class="lead">RK LIGHT කියන්නේ Wi-Fi හරහා <b>230V household lights</b> control කරන්න නිර්මාණය කරපු 4-channel smart lighting system එකක්. Phone app එකෙන් ගෙදර Wi-Fi එකේදීත්, internet හරහා remote වත් lights control කරන්න පුළුවන්.</p>
+          </div><div class="version-chip">SMART HOME</div>
         </div>
-      </div>
-
-      <nav class="nav-list" aria-label="Project sections">
-        <button class="nav-item active" data-page="overview">
-          <span class="nav-index">01</span>
-          <span>Overview</span>
-        </button>
-        <button class="nav-item" data-page="outputs">
-          <span class="nav-index">02</span>
-          <span>Outputs</span>
-        </button>
-        <button class="nav-item" data-page="architecture">
-          <span class="nav-index">03</span>
-          <span>Architecture</span>
-        </button>
-        <button class="nav-item" data-page="app">
-          <span class="nav-index">04</span>
-          <span>Mobile Apps</span>
-        </button>
-        <button class="nav-item" data-page="automation">
-          <span class="nav-index">05</span>
-          <span>Automation</span>
-        </button>
-        <button class="nav-item" data-page="setup">
-          <span class="nav-index">06</span>
-          <span>Setup</span>
-        </button>
-        <button class="nav-item" data-page="support">
-          <span class="nav-index">07</span>
-          <span>Support</span>
-        </button>
-      </nav>
-
-      <div class="sidebar-footer">
-        <span class="live-dot"></span>
-        <span>Project Guide · v4.3</span>
-      </div>
-    </aside>
-
-    <div class="workspace">
-      <header class="topbar">
-        <div class="mobile-brand">
-          <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
-          <strong>RK LIGHT</strong>
+        <div class="overview-grid">
+          <article class="hero-panel"><div class="hero-label">WHAT IT DOES</div><h2>One system. Four lights. Local + remote control.</h2>
+            <p>Low-voltage ESP controllers smart relay interfaces control කරනවා. ඒ relay interfaces හරහා lighting circuits switch වෙනවා. Userට app එකෙන් ON/OFF, schedules, countdowns සහ scenes manage කරන්න පුළුවන්.</p>
+            <div class="route-row"><div class="route"><span>AT HOME</span><b>Local Wi-Fi</b><small>Fast direct control</small></div><div class="route"><span>AWAY</span><b>Cloud Control</b><small>Remote access</small></div></div>
+          </article>
+          <div class="stats-grid">
+            <div class="stat-card"><span>Lighting</span><strong>04</strong><small>Independent channels</small></div>
+            <div class="stat-card"><span>Control</span><strong>Wi-Fi</strong><small>Local + internet</small></div>
+            <div class="stat-card"><span>Apps</span><strong>iOS + Android</strong><small>Mobile control</small></div>
+            <div class="stat-card"><span>Automation</span><strong>24/7</strong><small>Runs on controller</small></div>
+          </div>
         </div>
+      </section>
 
-        <div class="topbar-title">
-          <span class="eyebrow">ESP8266 + ESP32</span>
-          <span class="divider"></span>
-          <span class="top-status">4-Output Smart Control</span>
+      <section class="page" id="outputs">
+        <div class="page-head compact"><div><span class="kicker">LIGHTING CHANNELS</span><h1>Four independently controlled lights</h1><p class="lead">Each output represents a separate 230V lighting circuit controlled through a suitable isolated relay interface.</p></div></div>
+        <div class="output-grid">
+          <article class="output-card green"><div class="output-top"><span>LIGHT 01</span><b>SMART OUTPUT</b></div><div class="pin">Output 1</div><p>Independent ON / OFF control.</p></article>
+          <article class="output-card cyan"><div class="output-top"><span>LIGHT 02</span><b>SMART OUTPUT</b></div><div class="pin">Output 2</div><p>Independent ON / OFF control.</p></article>
+          <article class="output-card violet"><div class="output-top"><span>LIGHT 03</span><b>SMART OUTPUT</b></div><div class="pin">Output 3</div><p>Independent ON / OFF control.</p></article>
+          <article class="output-card amber"><div class="output-top"><span>LIGHT 04</span><b>SMART OUTPUT</b></div><div class="pin">Output 4</div><p>Independent ON / OFF control.</p></article>
         </div>
+        <div class="inline-note"><b>Simple idea:</b> Phone command → Wi-Fi controller → isolated relay interface → light ON/OFF. The mains side is not handled by the mobile app or ESP directly.</div>
+      </section>
 
-        <div class="top-actions">
-          <button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark theme">☼</button>
+      <section class="page" id="app">
+        <div class="page-head compact"><div><span class="kicker">MOBILE CONTROL</span><h1>Control lights from your phone</h1><p class="lead">A clean mobile dashboard gives quick access to lighting and automation.</p></div></div>
+        <div class="feature-layout">
+          <div class="feature-main"><span class="feature-tag">IOS + ANDROID</span><h2>Fast control with automatic reconnect.</h2>
+            <p>The app remembers the connection and is designed to reconnect automatically when reopened. Local Wi-Fi is used for fast control at home, while cloud connectivity enables remote control when away.</p>
+            <div class="platform-badges" aria-label="Supported platforms"><span> iOS · Lights 1–4</span><span>Android · Lights 1, 2 & 4</span></div>
+            <div class="progress-list"><div><span>Dark / Light appearance</span><b>CHOICE</b></div><div><span>Local + Cloud connection</span><b>AUTO</b></div><div><span>Last output state restore</span><b>SAVED</b></div></div>
+          </div>
+          <div class="feature-cards">
+            <article><b>Quick ON/OFF</b><span>Control each available light separately</span></article>
+            <article><b>Fast Return</b><span>Designed for quicker app reopen/reconnect</span></article>
+            <article><b>Dark / Light</b><span>Choose the appearance you prefer</span></article>
+            <article><b>Remote Access</b><span>Control through the internet when connected</span></article>
+            <article><b>Status</b><span>See the current smart-control state</span></article>
+            <article><b>Refresh</b><span>Sync current information from the controller</span></article>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main class="content">
-        <!-- OVERVIEW -->
-        <section class="page active" id="overview">
-          <div class="page-head">
-            <div>
-              <span class="kicker">RK LIGHT · v4.3</span>
-              <h1>Smart control, redesigned for mobile.</h1>
-              <p class="lead">
-                Outputs 4ක් <b>Local + Cloud</b> control කරන්න හදපු ESP8266 + ESP32 system එක.
-                iPhone සහ Android support, fast reconnect, persistent connection සහ cleaner multi-device architecture එකක් එක්ක.
-              </p>
-            </div>
-            <div class="version-chip">PROJECT READY</div>
+      <section class="page" id="automation">
+        <div class="page-head compact"><div><span class="kicker">SMART FEATURES</span><h1>Lighting that can run automatically</h1><p class="lead">Useful automation features are stored on the controller so scheduled actions can continue without keeping the phone app open.</p></div></div>
+        <div class="automation-grid">
+          <article><span class="number">01</span><b>DAILY / WEEKLY</b><p>Select Monday–Sunday individually and set recurring light actions.</p></article>
+          <article><span class="number">02</span><b>ONE-TIME</b><p>Schedule a light action for a specific date and time.</p></article>
+          <article><span class="number">03</span><b>COUNTDOWN</b><p>Run an ON or OFF action after a selected duration.</p></article>
+          <article><span class="number">04</span><b>AUTO-OFF</b><p>Automatically turn a selected light off after a set period.</p></article>
+          <article><span class="number">05</span><b>SCENES</b><p>Apply a saved combination of light states with one action.</p></article>
+          <article><span class="number">06</span><b>STATE RESTORE</b><p>After a controller restart, saved output states can be restored.</p></article>
+        </div>
+      </section>
+
+      <section class="page" id="safety">
+        <div class="page-head compact"><div><span class="kicker">ELECTRICAL SAFETY</span><h1>Smart electronics stay on the low-voltage side.</h1><p class="lead">RK LIGHT can control mains-powered lighting, but the ESP electronics are not connected directly to 230V.</p></div></div>
+        <div class="feature-layout">
+          <div class="feature-main"><span class="feature-tag">IMPORTANT</span><h2>Use proper isolation for mains lighting.</h2>
+            <p>The controller should operate a correctly rated, isolated switching interface inside a safe enclosure. Installation or changes on the 230V side should be handled by a qualified adult/electrician and follow local electrical requirements.</p>
+            <div class="progress-list"><div><span>ESP / control electronics</span><b>LOW VOLTAGE</b></div><div><span>Mains switching</span><b>ISOLATED</b></div><div><span>230V installation</span><b>ELECTRICIAN</b></div></div>
           </div>
-
-          <div class="overview-grid">
-            <article class="hero-panel">
-              <div class="hero-label">SYSTEM SUMMARY</div>
-              <h2>iOS + Android. Fast Local + Cloud control.</h2>
-              <p>
-                Output 1/2 ESP8266 එකෙන් direct control වෙනවා. Output 3 සහ Output 4
-                separate ESP32 nodes දෙකකින් run වෙනවා. Main ESP8266 controller එක bridge එකක් ලෙස වැඩ කරනවා.
-              </p>
-
-              <div class="route-row">
-                <div class="route">
-                  <span>LOCAL</span>
-                  <b>Home Wi-Fi</b>
-                  <small>Low-latency control</small>
-                </div>
-                <div class="route">
-                  <span>CLOUD</span>
-                  <b>HiveMQ</b>
-                  <small>Remote access</small>
-                </div>
-              </div>
-            </article>
-
-            <div class="stats-grid">
-              <div class="stat-card">
-                <span>Outputs</span>
-                <strong>04</strong>
-                <small>Independent channels</small>
-              </div>
-              <div class="stat-card">
-                <span>Controllers</span>
-                <strong>03</strong>
-                <small>ESP8266 + 2× ESP32</small>
-              </div>
-              <div class="stat-card">
-                <span>Apps</span>
-                <strong>iOS + Android</strong>
-                <small>Local + Cloud</small>
-              </div>
-              <div class="stat-card">
-                <span>Mode</span>
-                <strong>24/7</strong>
-                <small>Automation ready</small>
-              </div>
-            </div>
+          <div class="feature-cards">
+            <article><b>No direct 230V to ESP</b><span>Controllers remain on the low-voltage side</span></article>
+            <article><b>Rated switching</b><span>Use equipment suitable for the connected lighting load</span></article>
+            <article><b>Safe enclosure</b><span>Mains terminals should not be exposed</span></article>
+            <article><b>Isolation</b><span>Keep low-voltage control separated from mains wiring</span></article>
+            <article><b>Qualified installation</b><span>Mains work should be completed by a competent adult/electrician</span></article>
+            <article><b>Test safely</b><span>Develop and test the controller on low voltage first</span></article>
           </div>
-        </section>
-
-        <!-- OUTPUTS -->
-        <section class="page" id="outputs">
-          <div class="page-head compact">
-            <div>
-              <span class="kicker">HARDWARE MAP</span>
-              <h1>Outputs & pin mapping</h1>
-              <p class="lead">Current v4.2 hardware allocation එක.</p>
-            </div>
-          </div>
-
-          <div class="output-grid">
-            <article class="output-card green">
-              <div class="output-top"><span>OUTPUT 01</span><b>ESP8266</b></div>
-              <div class="pin">D1 <small>/ GPIO 5</small></div>
-              <p>Main controller direct output.</p>
-            </article>
-
-            <article class="output-card cyan">
-              <div class="output-top"><span>OUTPUT 02</span><b>ESP8266</b></div>
-              <div class="pin">D2 <small>/ GPIO 4</small></div>
-              <p>Main controller direct output.</p>
-            </article>
-
-            <article class="output-card violet">
-              <div class="output-top"><span>OUTPUT 03</span><b>ESP32 Node</b></div>
-              <div class="pin">GPIO 13</div>
-              <p>HIGH = ON · LOW = OFF</p>
-            </article>
-
-            <article class="output-card amber">
-              <div class="output-top"><span>OUTPUT 04</span><b>ESP32 Dev</b></div>
-              <div class="pin">GPIO 26</div>
-              <p>Dedicated future light node.</p>
-            </article>
-          </div>
-
-          <div class="inline-note">
-            <b>Note:</b>
-            Relay/module logic එක hardware එක අනුව verify කරන්න. Current Output 3 configuration එක <b>HIGH = ON</b>, <b>LOW = OFF</b>.
-          </div>
-        </section>
-
-        <!-- ARCHITECTURE -->
-        <section class="page" id="architecture">
-          <div class="page-head compact">
-            <div>
-              <span class="kicker">NETWORK DESIGN</span>
-              <h1>System architecture</h1>
-              <p class="lead">App command එක devices අතර move වෙන විදිහ.</p>
-            </div>
-          </div>
-
-          <div class="architecture-wrap">
-            <div class="flow-card">
-              <div class="flow-node primary">
-                <span>01</span>
-                <b>iPhone App</b>
-                <small>Local / HiveMQ Cloud</small>
-              </div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-node">
-                <span>02</span>
-                <b>ESP8266</b>
-                <small>Main controller + bridge</small>
-              </div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-stack">
-                <div class="flow-node small-node">
-                  <span>03</span>
-                  <b>ESP32 #1</b>
-                  <small>Output 3 · GPIO13</small>
-                </div>
-                <div class="flow-node small-node">
-                  <span>04</span>
-                  <b>ESP32 #2</b>
-                  <small>Output 4 · GPIO26</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="api-panel">
-              <div class="panel-title">
-                <span>OUTPUT APIs</span>
-                <small>Tap Copy</small>
-              </div>
-
-              <div class="api-row">
-                <code>/output3/on</code>
-                <button data-copy="/output3/on">Copy</button>
-              </div>
-              <div class="api-row">
-                <code>/output3/off</code>
-                <button data-copy="/output3/off">Copy</button>
-              </div>
-              <div class="api-row">
-                <code>/output4/on</code>
-                <button data-copy="/output4/on">Copy</button>
-              </div>
-              <div class="api-row">
-                <code>/output4/off</code>
-                <button data-copy="/output4/off">Copy</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- APP -->
-        <section class="page" id="app">
-          <div class="page-head compact">
-            <div>
-              <span class="kicker">IOS + ANDROID CONTROL</span>
-              <h1>Mobile app experience</h1>
-              <p class="lead">iPhone + Android දෙකටම fast, clean සහ automatic reconnect flow එක.</p>
-            </div>
-          </div>
-
-          <div class="feature-layout">
-            <div class="feature-main">
-              <span class="feature-tag">CONNECTION</span>
-              <h2>Connect once. Reconnect automatically.</h2>
-              <p>
-                First successful connection එකෙන් පස්සේ app එක connection preference save කරනවා.
-                App reopen කළාම manual Connect button press කරන්න නැතුව Local හෝ Cloud route එකට reconnect වෙන්න design කරලා තියෙනවා.
-                iPhone app එක Outputs 1–4 support කරනවා. Android app එක Outputs 1, 2 සහ 4 සඳහා optimize කරලා තියෙනවා.
-              </p>
-
-              <div class="platform-badges" aria-label="Supported mobile platforms">
-                <span> iOS · Outputs 1–4</span>
-                <span>Android · Outputs 1, 2 & 4</span>
-              </div>
-
-              <div class="progress-list">
-                <div><span>Local route priority</span><b>FAST</b></div>
-                <div><span>Cloud fallback</span><b>AUTO</b></div>
-                <div><span>Persistent intent</span><b>ON</b></div>
-              </div>
-            </div>
-
-            <div class="feature-cards">
-              <article><b>iOS Control</b><span>Outputs 1–4 with advanced controls</span></article>
-              <article><b>Android Control</b><span>Outputs 1, 2 & 4 with Local + Cloud</span></article>
-              <article><b>Auto Reconnect</b><span>Saved connection + automatic retry</span></article>
-              <article><b>Low Latency</b><span>Local route priority for faster control</span></article>
-              <article><b>Cloud Access</b><span>HiveMQ remote control support</span></article>
-              <article><b>Automation</b><span>Schedules, countdown, scenes & status</span></article>
-            </div>
-          </div>
-        </section>
-
-        <!-- AUTOMATION -->
-        <section class="page" id="automation">
-          <div class="page-head compact">
-            <div>
-              <span class="kicker">SMART LOGIC</span>
-              <h1>Automation features</h1>
-              <p class="lead">Phone එක close කරලා තිබුණත් controller-side automation continue වෙන්න design කරපු system එක.</p>
-            </div>
-          </div>
-
-          <div class="automation-grid">
-            <article>
-              <span class="number">01</span>
-              <b>AUTO MODE</b>
-              <p>Schedules සහ automatic rules සඳහා master control.</p>
-            </article>
-            <article>
-              <span class="number">02</span>
-              <b>SCHEDULES</b>
-              <p>One-time, Daily සහ Weekly ON/OFF events.</p>
-            </article>
-            <article>
-              <span class="number">03</span>
-              <b>COUNTDOWN</b>
-              <p>Selected output එකකට timed action එකක්.</p>
-            </article>
-            <article>
-              <span class="number">04</span>
-              <b>AUTO-OFF</b>
-              <p>Configured duration එකකට පස්සේ output OFF කිරීම.</p>
-            </article>
-            <article>
-              <span class="number">05</span>
-              <b>SCENES</b>
-              <p>Multiple outputs එක command එකකින් set කිරීම.</p>
-            </article>
-            <article>
-              <span class="number">06</span>
-              <b>POWER RESTORE</b>
-              <p>Restart පස්සේ output state recovery policy.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- SETUP -->
-        <section class="page" id="setup">
-          <div class="page-head compact">
-            <div>
-              <span class="kicker">QUICK START</span>
-              <h1>Setup sequence</h1>
-              <p class="lead">Components ආවට පස්සේ මේ order එකෙන් setup කරන්න.</p>
-            </div>
-          </div>
-
-          <div class="setup-grid">
-            <div class="setup-step">
-              <span>1</span>
-              <div><b>Flash ESP32 #1</b><p>Output 3 firmware + Wi-Fi details.</p></div>
-            </div>
-            <div class="setup-step">
-              <span>2</span>
-              <div><b>Flash ESP32 #2</b><p>Output 4 firmware + Wi-Fi details.</p></div>
-            </div>
-            <div class="setup-step">
-              <span>3</span>
-              <div><b>Update ESP8266</b><p>Set both ESP32 node addresses.</p></div>
-            </div>
-            <div class="setup-step">
-              <span>4</span>
-              <div><b>Install Mobile Apps</b><p>Build iOS IPA + Android APK with GitHub Actions.</p></div>
-            </div>
-            <div class="setup-step">
-              <span>5</span>
-              <div><b>Test Local</b><p>Outputs 1–4 individually.</p></div>
-            </div>
-            <div class="setup-step">
-              <span>6</span>
-              <div><b>Test Cloud</b><p>Mobile data / remote route.</p></div>
-            </div>
-          </div>
-
-          <div class="github-strip">
-            <div>
-              <small>GITHUB ACTIONS PATH</small>
-              <code>.github/workflows/build-ipa.yml</code>
-            </div>
-            <button data-copy=".github/workflows/build-ipa.yml">Copy Path</button>
-          </div>
-        </section>
-
-        <!-- SUPPORT -->
-        <section class="page" id="support">
-          <div class="page-head compact">
-            <div>
-              <span class="kicker">SUPPORT</span>
-              <h1>Common checks</h1>
-              <p class="lead">Fast troubleshooting reference.</p>
-            </div>
-          </div>
-
-          <div class="support-grid">
-            <button class="support-card" data-modal="offline">
-              <b>Output node OFFLINE</b>
-              <span>Network / IP checks</span>
-            </button>
-            <button class="support-card" data-modal="reverse">
-              <b>Relay logic reversed</b>
-              <span>HIGH / LOW mapping</span>
-            </button>
-            <button class="support-card" data-modal="ota">
-              <b>OTA no response</b>
-              <span>Network port mismatch</span>
-            </button>
-            <button class="support-card" data-modal="wifi">
-              <b>ESP Wi-Fi issue</b>
-              <span>SSID / 2.4 GHz checks</span>
-            </button>
-            <button class="support-card" data-modal="github">
-              <b>GitHub build error</b>
-              <span>Workflow / test checks</span>
-            </button>
-            <button class="support-card warning-card" data-modal="safety">
-              <b>Electrical Safety</b>
-              <span>Low-voltage testing first</span>
-            </button>
-          </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+    </main>
   </div>
+</div>
 
-
-  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
-    <button class="mobile-nav-item active" data-page="overview">
-      <span>⌂</span><small>Home</small>
-    </button>
-    <button class="mobile-nav-item" data-page="outputs">
-      <span>◫</span><small>Outputs</small>
-    </button>
-    <button class="mobile-nav-item" data-page="app">
-      <span>◉</span><small>App</small>
-    </button>
-    <button class="mobile-nav-item" data-page="setup">
-      <span>⚙</span><small>Setup</small>
-    </button>
-  </nav>
-
-  <div class="toast" id="toast">Copied</div>
-
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card" role="dialog" aria-modal="true">
-      <button class="modal-close" data-close-modal aria-label="Close">×</button>
-      <span class="modal-label">RK LIGHT SUPPORT</span>
-      <h2 id="modalTitle">Support</h2>
-      <p id="modalText"></p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <button class="mobile-nav-item active" data-page="overview"><span>⌂</span><small>Home</small></button>
+  <button class="mobile-nav-item" data-page="outputs"><span>◫</span><small>Lights</small></button>
+  <button class="mobile-nav-item" data-page="app"><span>◉</span><small>App</small></button>
+  <button class="mobile-nav-item" data-page="automation"><span>⌁</span><small>Smart</small></button>
+</nav>
+<script src="script.js"></script>
 </body>
 </html>

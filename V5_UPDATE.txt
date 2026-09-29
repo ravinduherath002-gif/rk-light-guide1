@@ -1,0 +1,6 @@
+RK LIGHT Website v5.0
+- Rewritten as a public-facing smart lighting overview.
+- Outputs described as four 230V household lighting channels controlled through isolated relay interfaces.
+- Removed developer-focused pin maps, APIs, flashing steps, and troubleshooting details from the public guide.
+- Added current app features: iOS/Android, dark/light mode, fast reconnect, Monday-Sunday schedules, automation, last-state restore.
+- Added clear electrical-safety section without mains wiring instructions.
