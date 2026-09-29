@@ -636,3 +636,35 @@ body.light .output-card{color:#f7fbff}
   .output-card{padding:11px}
   .pin{font-size:20px}
 }
+
+/* ===== v4.3 iOS + Android platform badges ===== */
+.platform-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+.platform-badges span{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:999px;
+  background:rgba(255,255,255,.045);
+  color:var(--text);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+@media(max-width:680px){
+  .platform-badges{
+    margin-top:8px;
+    gap:5px;
+  }
+  .platform-badges span{
+    min-height:22px;
+    padding:4px 7px;
+    font-size:6.8px;
+  }
+}

@@ -1,0 +1,12 @@
+RK LIGHT Website v4.3
+
+Added:
+- iOS + Android support messaging
+- iOS: Outputs 1–4
+- Android: Outputs 1, 2 & 4
+- Local + Cloud messaging
+- Auto reconnect messaging
+- GitHub Actions IPA + APK setup wording
+- Mobile platform badges
+
+The existing GitHub Pages URL and QR can stay unchanged.

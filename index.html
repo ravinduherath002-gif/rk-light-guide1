@@ -38,7 +38,7 @@
         </button>
         <button class="nav-item" data-page="app">
           <span class="nav-index">04</span>
-          <span>iPhone App</span>
+          <span>Mobile Apps</span>
         </button>
         <button class="nav-item" data-page="automation">
           <span class="nav-index">05</span>
@@ -56,7 +56,7 @@
 
       <div class="sidebar-footer">
         <span class="live-dot"></span>
-        <span>Project Guide · v4.2</span>
+        <span>Project Guide · v4.3</span>
       </div>
     </aside>
 
@@ -83,11 +83,11 @@
         <section class="page active" id="overview">
           <div class="page-head">
             <div>
-              <span class="kicker">RK LIGHT · v4.2</span>
+              <span class="kicker">RK LIGHT · v4.3</span>
               <h1>Smart control, redesigned for mobile.</h1>
               <p class="lead">
                 Outputs 4ක් <b>Local + Cloud</b> control කරන්න හදපු ESP8266 + ESP32 system එක.
-                Fast reconnect, persistent app connection සහ cleaner multi-device architecture එකක් එක්ක.
+                iPhone සහ Android support, fast reconnect, persistent connection සහ cleaner multi-device architecture එකක් එක්ක.
               </p>
             </div>
             <div class="version-chip">PROJECT READY</div>
@@ -96,7 +96,7 @@
           <div class="overview-grid">
             <article class="hero-panel">
               <div class="hero-label">SYSTEM SUMMARY</div>
-              <h2>One app. Four outputs. Two control routes.</h2>
+              <h2>iOS + Android. Fast Local + Cloud control.</h2>
               <p>
                 Output 1/2 ESP8266 එකෙන් direct control වෙනවා. Output 3 සහ Output 4
                 separate ESP32 nodes දෙකකින් run වෙනවා. Main ESP8266 controller එක bridge එකක් ලෙස වැඩ කරනවා.
@@ -128,9 +128,9 @@
                 <small>ESP8266 + 2× ESP32</small>
               </div>
               <div class="stat-card">
-                <span>App</span>
-                <strong>iOS</strong>
-                <small>Auto reconnect</small>
+                <span>Apps</span>
+                <strong>iOS + Android</strong>
+                <small>Local + Cloud</small>
               </div>
               <div class="stat-card">
                 <span>Mode</span>
@@ -251,9 +251,9 @@
         <section class="page" id="app">
           <div class="page-head compact">
             <div>
-              <span class="kicker">IOS CONTROL</span>
-              <h1>iPhone App experience</h1>
-              <p class="lead">Fast, clean සහ reconnect press කරන්න නොවෙන ලෙස optimize කරපු flow එක.</p>
+              <span class="kicker">IOS + ANDROID CONTROL</span>
+              <h1>Mobile app experience</h1>
+              <p class="lead">iPhone + Android දෙකටම fast, clean සහ automatic reconnect flow එක.</p>
             </div>
           </div>
 
@@ -264,7 +264,13 @@
               <p>
                 First successful connection එකෙන් පස්සේ app එක connection preference save කරනවා.
                 App reopen කළාම manual Connect button press කරන්න නැතුව Local හෝ Cloud route එකට reconnect වෙන්න design කරලා තියෙනවා.
+                iPhone app එක Outputs 1–4 support කරනවා. Android app එක Outputs 1, 2 සහ 4 සඳහා optimize කරලා තියෙනවා.
               </p>
+
+              <div class="platform-badges" aria-label="Supported mobile platforms">
+                <span> iOS · Outputs 1–4</span>
+                <span>Android · Outputs 1, 2 & 4</span>
+              </div>
 
               <div class="progress-list">
                 <div><span>Local route priority</span><b>FAST</b></div>
@@ -274,12 +280,12 @@
             </div>
 
             <div class="feature-cards">
-              <article><b>Manual Control</b><span>4 independent ON/OFF controls</span></article>
-              <article><b>Schedules</b><span>One-time + recurring actions</span></article>
-              <article><b>Countdown</b><span>Per-output timed actions</span></article>
-              <article><b>Scenes</b><span>All ON / OFF + custom scene</span></article>
-              <article><b>Auto-off</b><span>Automatic safety timing</span></article>
-              <article><b>Status</b><span>Live device & network state</span></article>
+              <article><b>iOS Control</b><span>Outputs 1–4 with advanced controls</span></article>
+              <article><b>Android Control</b><span>Outputs 1, 2 & 4 with Local + Cloud</span></article>
+              <article><b>Auto Reconnect</b><span>Saved connection + automatic retry</span></article>
+              <article><b>Low Latency</b><span>Local route priority for faster control</span></article>
+              <article><b>Cloud Access</b><span>HiveMQ remote control support</span></article>
+              <article><b>Automation</b><span>Schedules, countdown, scenes & status</span></article>
             </div>
           </div>
         </section>
@@ -353,7 +359,7 @@
             </div>
             <div class="setup-step">
               <span>4</span>
-              <div><b>Install iPhone App</b><p>Build IPA from GitHub Actions.</p></div>
+              <div><b>Install Mobile Apps</b><p>Build iOS IPA + Android APK with GitHub Actions.</p></div>
             </div>
             <div class="setup-step">
               <span>5</span>
