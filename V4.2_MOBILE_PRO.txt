@@ -1,0 +1,10 @@
+RK LIGHT Website v4.2 Mobile Pro
+
+- Mobile-first professional layout
+- 100dvh viewport with no page scrolling
+- Fixed bottom navigation on phones
+- Compact typography and spacing
+- 2x2 output grid optimized for phone screens
+- App-like cards and glass navigation
+- Desktop layout preserved
+- Same GitHub Pages URL / same QR can be used

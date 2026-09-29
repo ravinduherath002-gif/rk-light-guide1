@@ -98,3 +98,26 @@ document.addEventListener("keydown", e => {
     sidebar.classList.remove("open");
   }
 });
+
+
+const mobileNavItems = [...document.querySelectorAll(".mobile-nav-item")];
+
+function syncMobileNav(id){
+  mobileNavItems.forEach(item => {
+    item.classList.toggle("active", item.dataset.page === id);
+  });
+}
+
+mobileNavItems.forEach(item => {
+  item.addEventListener("click", () => {
+    openPage(item.dataset.page);
+    syncMobileNav(item.dataset.page);
+  });
+});
+
+const originalOpenPage = openPage;
+openPage = function(id){
+  originalOpenPage(id);
+  syncMobileNav(id);
+};
+syncMobileNav(location.hash.replace("#","") || "overview");
